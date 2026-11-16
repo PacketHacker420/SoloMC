@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SoloMC</title>
-<meta name="description" content="SoloMC — the premier Survival & Economy network. Java + Bedrock crossplay at solomc.net.">
+<meta name="description" content="SoloMC — the premier Economy network for Minecraft Java and Bedrock at solomc.net.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script src="/security-shield.js"></script>
 </head>
 <body>
 
@@ -21,24 +20,39 @@
 <a class="tab" data-view="store" href="#store">Store</a>
 <a class="tab" data-view="info" href="#info">Server Info</a>
 <a class="tab" data-view="forum" href="#forum">Forum</a>
+<a class="tab" data-view="tickets" href="#tickets">Tickets</a>
 <a class="tab" data-view="faq" href="#faq">FAQ</a>
 <a class="tab" href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Discord</a>
+<a class="tab" data-view="owner" href="#owner" id="ownerTab" hidden>Owner</a>
 <a class="tab" data-view="account" href="#account" id="accountTab">Log in</a>
 </div>
 <div class="nav-tools">
 <button type="button" class="ore-btn gray tool-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language">
 <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg>
 <span id="langLabel" class="notranslate" translate="no">Language</span></button>
+<button type="button" class="ore-btn gray tool-btn" id="fontBtn" aria-haspopup="true" aria-expanded="false" aria-controls="fontMenu" aria-label="Font">
+<span class="aa notranslate" translate="no">Aa</span><span class="tool-label">Font</span></button>
 <button type="button" class="ore-btn tool-btn" id="cartBtn" aria-label="Cart">
 <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M2 3h3l3 12h11l2-8H6"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>
 <span class="cart-text">Cart</span><span class="cart-count" id="cartCount">0</span></button>
 <button type="button" class="ore-btn gray tool-btn burger" id="menuBtn" aria-expanded="false" aria-controls="tabs" aria-label="Menu">
 <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-<span>Menu</span></button>
+<span class="menu-label">Menu</span></button>
 </div>
+
 <div class="ore-panel dropdown lang-menu notranslate" translate="no" id="langMenu" hidden>
 <input type="text" id="langSearch" placeholder="Search language..." autocomplete="off" spellcheck="false">
 <div class="lang-list" id="langList" role="listbox"></div>
+</div>
+
+<div class="ore-panel dropdown lang-menu notranslate" translate="no" id="fontMenu" hidden>
+<input type="text" id="fontSearch" placeholder="Search fonts..." autocomplete="off" spellcheck="false">
+<div class="lang-list" id="fontList" role="listbox"></div>
+<div class="font-custom">
+<input type="text" id="fontCustom" placeholder="Any Google Font name" autocomplete="off" spellcheck="false" maxlength="60">
+<button type="button" class="ore-btn small" id="fontCustomBtn">Use</button>
+</div>
+<button type="button" class="ore-btn gray small" id="fontReset">Reset font</button>
 </div>
 </div></nav>
 <div id="google_translate_element"></div>
@@ -48,11 +62,11 @@
 <div class="hero reveal">
 <img class="hero-logo" src="assets/logo.png" alt="SoloMC">
 <div class="badge-row">
-<span class="pill">Survival • Economy</span>
+<span class="pill">Economy</span>
 <span class="pill">Low latency • DDoS shielded</span>
 </div>
-<h1>The premier survival &amp; <span class="hl">economy</span> network</h1>
-<p>Forge your empire, dominate the player-driven economy, and battle for leaderboard dominance on SoloMC. Complete Java and Bedrock crossplay supported.</p>
+<h1>The premier <span class="hl">economy</span> network</h1>
+<p>Forge your empire, dominate the player-driven economy, and battle for leaderboard dominance on SoloMC. Java and Bedrock players are both welcome.</p>
 <div class="status-row" id="statusRow"></div>
 <div class="cta-row">
 <a class="ore-btn" href="#store">Visit Rank Store</a>
@@ -62,10 +76,11 @@
 </div>
 
 <div class="ore-panel stats-grid reveal">
-<div class="stat"><small>Game modes</small><b>Survival • Economy</b></div>
-<div class="stat"><small>Crossplay</small><b>Java + Bedrock</b></div>
+<div class="stat span"><small>Server IP</small><b class="hl">solomc.net</b></div>
+<div class="stat"><small>Game modes</small><b>Economy</b></div>
 <div class="stat"><small>Compatibility</small><b>Cracked + Premium</b></div>
-<div class="stat"><small>Server port</small><b>25665</b></div>
+<div class="stat"><small>Java port</small><b>25565</b></div>
+<div class="stat"><small>Bedrock port</small><b>19132</b></div>
 </div>
 
 <div class="reveal">
@@ -88,6 +103,16 @@
 <h1 class="section-title">Server <span class="hl">webstore</span></h1>
 <p class="lead">Support SoloMC and unlock exclusive lifetime ranks, crate keys, spawners &amp; special bundles.</p>
 </div>
+
+<div class="ore-panel mc-panel reveal">
+<img class="mc-head" id="mcHead" alt="Your Minecraft skin" width="64" height="64">
+<div class="field" style="flex:1">
+<label for="mcName">Your Minecraft username</label>
+<input type="text" id="mcName" maxlength="17" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the name you play with">
+<small class="dim" id="mcHint">Your skin shows up here so you know it's the right account. Purchases are delivered to this name.</small>
+</div>
+</div>
+
 <div class="store-tabs reveal" id="storeTabs"></div>
 <div class="store-grid reveal" id="storeGrid"></div>
 <div class="note-line reveal"><span class="hl">⚡</span><span><b>Automatic delivery:</b> All ranks, keys, spawners &amp; bundles are delivered in-game within 1 to 5 minutes of checkout.</span></div>
@@ -98,24 +123,26 @@
 <div class="section-head reveal">
 <span class="pill">Connection guide</span>
 <h1 class="section-title">Server <span class="hl">information</span></h1>
-<p class="lead">Direct connection coordinates for Minecraft Java and Bedrock Edition players.</p>
+<p class="lead">Direct connection details for Minecraft Java and Bedrock Edition players.</p>
 </div>
+
+<div class="ore-panel stats-grid reveal" style="grid-template-columns:repeat(2,1fr)">
+<div class="stat"><small>Server IP</small><b class="hl">solomc.net</b></div>
+<div class="stat"><small>Game modes</small><b>Economy</b></div>
+</div>
+
 <div class="info-grid reveal">
 <div class="ore-panel edition">
-<div class="edition-head"><span class="ore-inset edition-ic">☕</span><div><h3>Java Edition</h3><p>PC, Mac &amp; Linux clients</p></div></div>
-<div class="ore-inset row"><span>Server IP</span><span class="hl">solomc.net</span></div>
-<div class="ore-inset row"><span>Port</span><span class="hl">25665</span></div>
+<div class="edition-head"><span class="ore-inset edition-ic">☕</span><div><h3>Java Edition</h3><p>Windows, Mac &amp; Linux clients</p></div></div>
+<div class="ore-inset row"><span>Port</span><span class="hl">25565</span></div>
 <div class="ore-inset row"><span>Compatibility</span><span>Cracked + Premium</span></div>
-<div class="ore-inset row"><span>Game modes</span><span>Survival • Economy</span></div>
-<button type="button" class="ore-btn block" data-copy="25665">Copy Java IP &amp; Port</button>
+<button type="button" class="ore-btn block" data-copy="solomc.net:25565">Copy Java Address &amp; Port</button>
 </div>
 <div class="ore-panel edition">
-<div class="edition-head"><span class="ore-inset edition-ic">📱</span><div><h3>Bedrock Edition</h3><p>iOS, Android, consoles &amp; Windows 10/11</p></div></div>
-<div class="ore-inset row"><span>Server IP</span><span class="hl">solomc.net</span></div>
-<div class="ore-inset row"><span>Bedrock port</span><span class="hl">25665</span></div>
-<div class="ore-inset row"><span>Crossplay</span><span>Full support</span></div>
+<div class="edition-head"><span class="ore-inset edition-ic"><svg class="bedrock-ic" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect width="8" height="8" fill="#555"/><rect x="0" y="0" width="2" height="1" fill="#8a8a8a"/><rect x="3" y="0" width="1" height="2" fill="#2e2e2e"/><rect x="5" y="1" width="2" height="1" fill="#7a7a7a"/><rect x="1" y="2" width="1" height="2" fill="#2e2e2e"/><rect x="4" y="3" width="2" height="1" fill="#8a8a8a"/><rect x="6" y="3" width="1" height="2" fill="#2e2e2e"/><rect x="0" y="5" width="2" height="1" fill="#7a7a7a"/><rect x="3" y="5" width="1" height="2" fill="#2e2e2e"/><rect x="5" y="6" width="2" height="1" fill="#8a8a8a"/><rect x="1" y="7" width="2" height="1" fill="#2e2e2e"/><rect x="6" y="0" width="1" height="1" fill="#2e2e2e"/><rect x="7" y="7" width="1" height="1" fill="#7a7a7a"/></svg></span><div><h3>Bedrock Edition</h3><p>iOS, Android, consoles &amp; Windows 10/11</p></div></div>
+<div class="ore-inset row"><span>Bedrock port</span><span class="hl">19132</span></div>
 <div class="ore-inset row"><span>Compatibility</span><span>Cracked + Premium</span></div>
-<button type="button" class="ore-btn gray block" data-copy="solomc.net:25665">Copy Bedrock Address &amp; Port</button>
+<button type="button" class="ore-btn block" data-copy="solomc.net:19132">Copy Bedrock Address &amp; Port</button>
 </div>
 </div>
 </section>
@@ -136,6 +163,47 @@
 <div class="thread" id="thread" hidden></div>
 </section>
 
+<!-- ============ TICKETS ============ -->
+<section class="view page" id="v-tickets" data-view="tickets">
+<div class="section-head reveal">
+<span class="pill">Support</span>
+<h1 class="section-title">Support <span class="hl">tickets</span></h1>
+<p class="lead">Need help? Open a ticket and the staff team will reply right here. Only you and the staff can see your tickets.</p>
+</div>
+<div class="msg info" id="ticketNotice"></div>
+<div id="ticketMain" style="display:flex;flex-direction:column;gap:18px">
+<div class="board-tabs" id="ticketTabs"></div>
+<div class="forum-bar"><p id="ticketDesc"></p><button type="button" class="ore-btn" id="newTicketBtn">New ticket</button></div>
+<div class="post-list" id="ticketList"></div>
+</div>
+<div class="thread" id="ticketThread" hidden></div>
+</section>
+
+<!-- ============ OWNER PANEL ============ -->
+<section class="view page" id="v-owner" data-view="owner">
+<div class="section-head reveal">
+<span class="pill">Owner only</span>
+<h1 class="section-title">Owner <span class="hl">panel</span></h1>
+<p class="lead">Staff activity tools. Regular staff accounts can't see this page or its data.</p>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Staff last seen</h3><button type="button" class="ore-btn gray small" id="seenRefresh">Refresh</button></div>
+<div class="owner-list" id="seenList"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Staff activity check</h3></div>
+<form class="form" id="checkForm" novalidate>
+<div class="field"><label for="checkTitle">Title</label><input type="text" id="checkTitle" maxlength="120" placeholder="e.g. Activity check — week of Nov 16"></div>
+<div class="field"><label for="checkNote">Instructions (optional)</label><textarea id="checkNote" maxlength="1000" style="min-height:80px" placeholder="What staff need to do or confirm"></textarea></div>
+<div class="msg" id="checkMsg"></div>
+<button type="submit" class="ore-btn">Start activity check</button>
+</form>
+<div class="owner-list" id="checkList"></div>
+</div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="view page" id="v-faq" data-view="faq">
 <div class="section-head reveal">
@@ -144,10 +212,13 @@
 <p class="lead">Helpful answers regarding joining the server, rank fulfillment, and gameplay features.</p>
 </div>
 <div class="faq-list reveal">
-<details class="ore-panel faq-item" open><summary>How do I join on Minecraft Java &amp; Bedrock?</summary><div class="ans">For both Java and Bedrock Edition, set the server IP address to <b>solomc.net</b> and the port to <b>26533</b>.</div></details>
+<details class="ore-panel faq-item" open><summary>How do I join on Minecraft Java &amp; Bedrock?</summary><div class="ans">
+<p><b>Java Edition:</b> go to Multiplayer → Add Server, and enter the server address <b>solomc.net</b>. Java uses the default port <b>25565</b>, so you don't need to type a port.</p>
+<p><b>Bedrock Edition</b> (Windows 10/11, iOS, Android and consoles): go to Play → Servers → Add Server, enter the server address <b>solomc.net</b>, and set the port to <b>19132</b>. Bedrock players must set the port to 19132 or the server won't show up.</p>
+</div></details>
 <details class="ore-panel faq-item"><summary>Can players with non-premium (cracked) accounts join?</summary><div class="ans">Yes, SoloMC fully supports both official Mojang/Microsoft accounts and non-premium (cracked) clients. Simply enter <b>solomc.net</b> and connect!</div></details>
 <details class="ore-panel faq-item"><summary>How long does it take for ranks to be delivered?</summary><div class="ans">Purchases are automated and delivered via console commands within <b>1 to 5 minutes</b>. Please stay connected to <b>solomc.net</b> while completing checkout.</div></details>
-<details class="ore-panel faq-item"><summary>Where do I go if I need staff assistance?</summary><div class="ans">Our staff team assists players directly through Discord. Join our Discord server at <a href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>discord.gg/solomc</a> and open a ticket.</div></details>
+<details class="ore-panel faq-item"><summary>Where do I go if I need staff assistance?</summary><div class="ans">Open a ticket on the <a href="#tickets">Tickets page</a>, or join our Discord server at <a href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>discord.gg/solomc</a> and open a ticket there.</div></details>
 </div>
 </section>
 
@@ -185,10 +256,34 @@
 </form>
 </div>
 
-<div class="ore-panel auth-card" id="authProfile" hidden>
-<div class="profile-head"><h3><span id="profName" class="notranslate" translate="no"></span><span class="staff-tag" id="profStaff" hidden>Staff</span></h3><span class="dim" id="profEmail"></span></div>
+<div class="ore-panel auth-card profile-card" id="authProfile" hidden>
+<div class="prof-banner" id="profBanner"></div>
+<div class="prof-avatar" id="profAvatar"></div>
+<div class="profile-head">
+<h3><span id="profName" class="notranslate" translate="no"></span><span class="staff-tag" id="profStaff" hidden>Staff</span><span class="staff-tag owner" id="profOwner" hidden>Owner</span></h3>
+<span class="dim notranslate" translate="no" id="profHandle"></span>
+<span class="dim notranslate" translate="no" id="profEmail"></span>
+</div>
 <div class="msg info" id="staffNote" hidden>This is a staff account. Its password is managed by the server owner, so it can't be changed here.</div>
 <div class="msg" id="profMsg"></div>
+<button type="button" class="ore-btn block" id="editProfileBtn">Edit profile</button>
+
+<form class="form" id="profileForm" hidden novalidate>
+<div class="field"><label for="pfDisplay">Display name</label><input type="text" id="pfDisplay" maxlength="32" placeholder="How your name shows on the forum"></div>
+<div class="field"><label for="pfUser">Username</label><input type="text" id="pfUser" maxlength="20" placeholder="3-20 letters, numbers or _"></div>
+<div class="field"><label for="pfPhoto">Profile picture</label>
+<div class="file-row"><div class="thumb" id="pfPhotoThumb"></div><input type="file" id="pfPhoto" accept="image/*"><button type="button" class="ore-btn gray small" id="pfPhotoRemove">Remove</button></div></div>
+<div class="field"><label for="pfBanner">Banner</label>
+<div class="file-row"><div class="thumb wide" id="pfBannerThumb"></div><input type="file" id="pfBanner" accept="image/*"><button type="button" class="ore-btn gray small" id="pfBannerRemove">Remove</button></div></div>
+<div class="msg" id="pfMsg"></div>
+<div class="btn-row"><button type="submit" class="ore-btn" id="pfSave">Save changes</button><button type="button" class="ore-btn gray" id="pfCancel">Cancel</button></div>
+</form>
+
+<div id="actChecks" hidden>
+<h3 style="font-size:20px;margin-top:6px">Activity checks</h3>
+<div class="owner-list" id="actList"></div>
+</div>
+
 <button type="button" class="ore-btn gray block" id="resetBtn">Email me a password reset link</button>
 <button type="button" class="ore-btn danger block" id="logoutBtn">Log out</button>
 </div>
@@ -199,6 +294,10 @@
 <div class="modal-overlay" id="cartModal">
 <div class="ore-panel modal-card">
 <div class="modal-header"><h2>Your cart</h2><button type="button" class="close-btn" data-close="cartModal" aria-label="Close">&times;</button></div>
+<div class="ore-inset mc-panel" style="padding:12px">
+<img class="mc-head small" id="mcHead2" alt="Your Minecraft skin" width="48" height="48">
+<div class="field" style="flex:1"><label for="mcName2">Minecraft username</label><input type="text" id="mcName2" maxlength="17" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Your in-game name"></div>
+</div>
 <div class="cart-lines" id="cartLines"></div>
 <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
 <div class="msg" id="cartMsg"></div>
@@ -219,13 +318,45 @@
 </div>
 </div>
 
+<div class="modal-overlay" id="ticketModal">
+<div class="ore-panel modal-card">
+<div class="modal-header"><h2>New ticket</h2><button type="button" class="close-btn" data-close="ticketModal" aria-label="Close">&times;</button></div>
+<form class="form" id="ticketForm" novalidate>
+<div class="field"><label for="tkCat">Category</label>
+<select id="tkCat">
+<option value="support">Support</option>
+<option value="store">Store / purchase issue</option>
+<option value="report">Report a player</option>
+<option value="appeal">Ban appeal</option>
+<option value="other">Other</option>
+</select></div>
+<div class="field"><label for="tkSubject">Subject</label><input type="text" id="tkSubject" maxlength="100"></div>
+<div class="field"><label for="tkMessage">Describe the problem</label><textarea id="tkMessage" maxlength="4000" placeholder="Include your Minecraft username and as many details as you can."></textarea></div>
+<div class="msg" id="tkMsg"></div>
+<button type="submit" class="ore-btn block" id="tkSubmit">Open ticket</button>
+</form>
+</div>
+</div>
+
+<div class="modal-overlay" id="profileModal">
+<div class="ore-panel modal-card" style="padding:0;overflow:hidden">
+<div class="prof-banner" id="pmBanner" style="border-width:0 0 2px 0"></div>
+<div style="padding:0 22px 22px;display:flex;flex-direction:column;gap:10px">
+<div class="prof-avatar" id="pmAvatar"></div>
+<h3 style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span id="pmName" class="notranslate" translate="no"></span><span class="staff-tag" id="pmStaff" hidden>Staff</span><span class="staff-tag owner" id="pmOwner" hidden>Owner</span></h3>
+<span class="dim notranslate" translate="no" id="pmHandle"></span>
+<button type="button" class="ore-btn gray block" data-close="profileModal">Close</button>
+</div>
+</div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <footer class="site-footer">
 <div class="footer-grid">
 <div>
 <img class="footer-logo" src="assets/logo.png" alt="SoloMC">
-<p>SoloMC is an independent Minecraft multiplayer network providing custom Survival and Economy gameplay with full Java and Bedrock crossplay.</p>
+<p>SoloMC is an independent Minecraft multiplayer network providing custom Economy gameplay for Java and Bedrock players.</p>
 </div>
 <div>
 <h4>Navigation</h4>
@@ -233,13 +364,13 @@
 <a href="#store">Webstore</a>
 <a href="#info">Server Info</a>
 <a href="#forum">Forum</a>
+<a href="#tickets">Tickets</a>
 <a href="#faq">FAQ</a>
 </div>
 <div>
 <h4>Community</h4>
 <a href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Official Discord</a>
 <a id="emailLink" href="#" hidden>Email Support</a>
-<a href="#info">Connection Guide</a>
 </div>
 </div>
 <div class="legal"><span class="notranslate" translate="no">&copy; 2026 SoloMC Network. All rights reserved.</span><span>Not affiliated with Mojang AB or Microsoft.</span></div>
