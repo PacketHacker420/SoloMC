@@ -3,9 +3,9 @@
    ===================================================================== */
 var CONFIG = {
   SERVER_IP: 'solomc.net',
-  PORT: '26533',
+  PORT: '25665',
   DISCORD_URL: 'https://discord.gg/solomc',
-  SUPPORT_EMAIL: 'faxis@solomc.net',            // e.g. 'support@solomc.net' (leave empty to hide "Email Support")
+  SUPPORT_EMAIL: 'faxissssss@gmail.com',            // e.g. 'support@solomc.net' (leave empty to hide "Email Support")
 
   // Paste your Firebase web-app config here (Project settings > Your apps > Web app).
   // Until this is filled in, the forum and login pages show a "not connected yet" notice.
