@@ -11,10 +11,10 @@ var CONFIG = {
 
   // Paste your Firebase web-app config here (Project settings > Your apps > Web app).
   FIREBASE: {
-    apiKey: 'PASTE_API_KEY',
-    authDomain: 'PASTE_PROJECT_ID.firebaseapp.com',
-    projectId: 'PASTE_PROJECT_ID',
-    appId: 'PASTE_APP_ID'
+    apiKey: 'AIzaSyDsFdFZwEd2_pJNjB_XEYt-OZoYxlPEPJ4',
+    authDomain: 'solomc-40d60.firebaseapp.com',
+    projectId: 'solomc-40d60',
+    appId: '1:732662603579:web:c299d3187fbca16dc2211e'
   },
 
   // Store checkout. Receives the cart [{id, name, price, qty}] and the buyer's Minecraft
