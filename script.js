@@ -5,15 +5,15 @@ var CONFIG = {
   SERVER_IP: 'solomc.net',
   PORT: '26533',
   DISCORD_URL: 'https://discord.gg/solomc',
-  SUPPORT_EMAIL: '',            // e.g. 'support@solomc.net' (leave empty to hide "Email Support")
+  SUPPORT_EMAIL: 'faxis@solomc.net',            // e.g. 'support@solomc.net' (leave empty to hide "Email Support")
 
   // Paste your Firebase web-app config here (Project settings > Your apps > Web app).
   // Until this is filled in, the forum and login pages show a "not connected yet" notice.
   FIREBASE: {
-    apiKey: 'PASTE_API_KEY',
-    authDomain: 'PASTE_PROJECT_ID.firebaseapp.com',
-    projectId: 'PASTE_PROJECT_ID',
-    appId: 'PASTE_APP_ID'
+    apiKey: 'AIzaSyDsFdFZwEd2_pJNjB_XEYt-OZoYxlPEPJ4',
+    authDomain: 'solomc-40d60.firebaseapp.com',
+    projectId: 'solomc-40d60',
+    appId: '1:732662603579:web:c299d3187fbca16dc2211e'
   },
 
   // Store: when you get the API details from the owner, put your checkout call in here.
