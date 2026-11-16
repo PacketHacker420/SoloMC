@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoloMC</title>
+<meta name="description" content="SoloMC — the premier Survival & Economy network. Java + Bedrock crossplay at solomc.net.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-inner">
+<a class="brand notranslate" translate="no" href="#home"><img src="assets/logo.png" alt="SoloMC logo">SoloMC</a>
+<div class="tabs" id="tabs">
+<a class="tab" data-view="home" href="#home">Home</a>
+<a class="tab" data-view="store" href="#store">Store</a>
+<a class="tab" data-view="info" href="#info">Server Info</a>
+<a class="tab" data-view="forum" href="#forum">Forum</a>
+<a class="tab" data-view="faq" href="#faq">FAQ</a>
+<a class="tab" href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Discord</a>
+<a class="tab" data-view="account" href="#account" id="accountTab">Log in</a>
+</div>
+<div class="nav-tools">
+<button type="button" class="ore-btn gray tool-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language">
+<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg>
+<span id="langLabel" class="notranslate" translate="no">Language</span></button>
+<button type="button" class="ore-btn tool-btn" id="cartBtn" aria-label="Cart">
+<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M2 3h3l3 12h11l2-8H6"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>
+<span class="cart-text">Cart</span><span class="cart-count" id="cartCount">0</span></button>
+<button type="button" class="ore-btn gray tool-btn burger" id="menuBtn" aria-expanded="false" aria-controls="tabs" aria-label="Menu">
+<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+<span>Menu</span></button>
+</div>
+<div class="ore-panel dropdown lang-menu notranslate" translate="no" id="langMenu" hidden>
+<input type="text" id="langSearch" placeholder="Search language..." autocomplete="off" spellcheck="false">
+<div class="lang-list" id="langList" role="listbox"></div>
+</div>
+</div></nav>
+<div id="google_translate_element"></div>
+
+<!-- ============ HOME ============ -->
+<section class="view page" id="v-home" data-view="home">
+<div class="hero reveal">
+<img class="hero-logo" src="assets/logo.png" alt="SoloMC">
+<div class="badge-row">
+<span class="pill">Survival • Economy</span>
+<span class="pill">Low latency • DDoS shielded</span>
+</div>
+<h1>The premier survival &amp; <span class="hl">economy</span> network</h1>
+<p>Forge your empire, dominate the player-driven economy, and battle for leaderboard dominance on SoloMC. Complete Java and Bedrock crossplay supported.</p>
+<div class="status-row" id="statusRow"></div>
+<div class="cta-row">
+<a class="ore-btn" href="#store">Visit Rank Store</a>
+<button type="button" class="ore-btn gray" data-copy="solomc.net">Copy IP: solomc.net</button>
+<a class="ore-btn blurple" href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Join Discord</a>
+</div>
+</div>
+
+<div class="ore-panel stats-grid reveal">
+<div class="stat"><small>Game modes</small><b>Survival • Economy</b></div>
+<div class="stat"><small>Crossplay</small><b>Java + Bedrock</b></div>
+<div class="stat"><small>Compatibility</small><b>Cracked + Premium</b></div>
+<div class="stat"><small>Server port</small><b>26533</b></div>
+</div>
+
+<div class="reveal">
+<div class="section-head"><span class="pill">News</span><h2 class="section-title">Latest <span class="hl">updates</span></h2></div>
+</div>
+<div class="updates-strip reveal" id="homeUpdates"></div>
+
+<div class="ore-panel reveal" style="padding:26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px">
+<span class="pill">Official Discord community</span>
+<h2 class="section-title" style="font-size:24px">Join the SoloMC network community</h2>
+<p class="lead">Chat with active players, open support tickets, receive announcements, and participate in community events and rank giveaways.</p>
+<a class="ore-btn blurple" href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Join Discord Server</a>
+</div>
+</section>
+
+<!-- ============ STORE ============ -->
+<section class="view page wide" id="v-store" data-view="store">
+<div class="section-head reveal">
+<span class="pill">Official store</span>
+<h1 class="section-title">Server <span class="hl">webstore</span></h1>
+<p class="lead">Support SoloMC and unlock exclusive lifetime ranks, crate keys, spawners &amp; special bundles.</p>
+</div>
+<div class="store-tabs reveal" id="storeTabs"></div>
+<div class="store-grid reveal" id="storeGrid"></div>
+<div class="note-line reveal"><span class="hl">⚡</span><span><b>Automatic delivery:</b> All ranks, keys, spawners &amp; bundles are delivered in-game within 1 to 5 minutes of checkout.</span></div>
+</section>
+
+<!-- ============ SERVER INFO ============ -->
+<section class="view page" id="v-info" data-view="info">
+<div class="section-head reveal">
+<span class="pill">Connection guide</span>
+<h1 class="section-title">Server <span class="hl">information</span></h1>
+<p class="lead">Direct connection coordinates for Minecraft Java and Bedrock Edition players.</p>
+</div>
+<div class="info-grid reveal">
+<div class="ore-panel edition">
+<div class="edition-head"><span class="ore-inset edition-ic">☕</span><div><h3>Java Edition</h3><p>PC, Mac &amp; Linux clients</p></div></div>
+<div class="ore-inset row"><span>Server IP</span><span class="hl">solomc.net</span></div>
+<div class="ore-inset row"><span>Port</span><span class="hl">26533</span></div>
+<div class="ore-inset row"><span>Compatibility</span><span>Cracked + Premium</span></div>
+<div class="ore-inset row"><span>Game modes</span><span>Survival • Economy</span></div>
+<button type="button" class="ore-btn block" data-copy="solomc.net:26533">Copy Java IP &amp; Port</button>
+</div>
+<div class="ore-panel edition">
+<div class="edition-head"><span class="ore-inset edition-ic">📱</span><div><h3>Bedrock Edition</h3><p>iOS, Android, consoles &amp; Windows 10/11</p></div></div>
+<div class="ore-inset row"><span>Server IP</span><span class="hl">solomc.net</span></div>
+<div class="ore-inset row"><span>Bedrock port</span><span class="hl">26533</span></div>
+<div class="ore-inset row"><span>Crossplay</span><span>Full support</span></div>
+<div class="ore-inset row"><span>Compatibility</span><span>Cracked + Premium</span></div>
+<button type="button" class="ore-btn gray block" data-copy="solomc.net 26533">Copy Bedrock Address &amp; Port</button>
+</div>
+</div>
+</section>
+
+<!-- ============ FORUM ============ -->
+<section class="view page" id="v-forum" data-view="forum">
+<div class="section-head reveal">
+<span class="pill">Community</span>
+<h1 class="section-title">SoloMC <span class="hl">forum</span></h1>
+<p class="lead">Official updates from the staff team, plus boards for the whole community.</p>
+</div>
+<div class="msg info" id="forumNotice"></div>
+<div id="forumList" style="display:flex;flex-direction:column;gap:18px">
+<div class="board-tabs" id="boardTabs"></div>
+<div class="forum-bar"><p id="boardDesc"></p><button type="button" class="ore-btn" id="newPostBtn">New Post</button></div>
+<div class="post-list" id="postList"></div>
+</div>
+<div class="thread" id="thread" hidden></div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="view page" id="v-faq" data-view="faq">
+<div class="section-head reveal">
+<span class="pill">FAQ</span>
+<h1 class="section-title">Frequently asked <span class="hl">questions</span></h1>
+<p class="lead">Helpful answers regarding joining the server, rank fulfillment, and gameplay features.</p>
+</div>
+<div class="faq-list reveal">
+<details class="ore-panel faq-item" open><summary>How do I join on Minecraft Java &amp; Bedrock?</summary><div class="ans">For both Java and Bedrock Edition, set the server IP address to <b>solomc.net</b> and the port to <b>26533</b>.</div></details>
+<details class="ore-panel faq-item"><summary>Can players with non-premium (cracked) accounts join?</summary><div class="ans">Yes, SoloMC fully supports both official Mojang/Microsoft accounts and non-premium (cracked) clients. Simply enter <b>solomc.net</b> and connect!</div></details>
+<details class="ore-panel faq-item"><summary>How long does it take for ranks to be delivered?</summary><div class="ans">Purchases are automated and delivered via console commands within <b>1 to 5 minutes</b>. Please stay connected to <b>solomc.net</b> while completing checkout.</div></details>
+<details class="ore-panel faq-item"><summary>Where do I go if I need staff assistance?</summary><div class="ans">Our staff team assists players directly through Discord. Join our Discord server at <a href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>discord.gg/solomc</a> and open a ticket.</div></details>
+</div>
+</section>
+
+<!-- ============ ACCOUNT ============ -->
+<section class="view page" id="v-account" data-view="account">
+<div class="auth-wrap">
+<div class="section-head reveal"><span class="pill">Account</span><h1 class="section-title">Your <span class="hl">account</span></h1></div>
+<div class="msg info" id="authNotice"></div>
+
+<div class="ore-panel auth-card" id="authGuest">
+<div class="auth-tabs">
+<button type="button" class="tab active" id="tabLogin" data-mode="login">Log in</button>
+<button type="button" class="tab" id="tabSignup" data-mode="signup">Sign up</button>
+</div>
+<button type="button" class="ore-btn gray block" id="googleBtn">Continue with Google</button>
+<button type="button" class="ore-btn gray block" id="microsoftBtn">Continue with Microsoft</button>
+<div class="divider">or use email</div>
+<form class="form" id="authForm" novalidate>
+<div class="field" id="usernameField" hidden><label for="authUsername">Forum username</label><input type="text" id="authUsername" maxlength="20" autocomplete="username" placeholder="3-20 letters, numbers or _"></div>
+<div class="field"><label for="authEmail">Email</label><input type="email" id="authEmail" autocomplete="email" placeholder="you@example.com"></div>
+<div class="field"><label for="authPass">Password</label><input type="password" id="authPass" autocomplete="current-password" placeholder="At least 8 characters"></div>
+<div class="msg" id="authMsg"></div>
+<button type="submit" class="ore-btn block" id="authSubmit">Log in</button>
+<button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
+</form>
+</div>
+
+<div class="ore-panel auth-card" id="authUsernameCard" hidden>
+<h3>Choose your forum username</h3>
+<p class="dim">This is the name other players will see. Your email and real name stay private.</p>
+<form class="form" id="usernameForm" novalidate>
+<div class="field"><label for="newUsername">Forum username</label><input type="text" id="newUsername" maxlength="20" placeholder="3-20 letters, numbers or _"></div>
+<div class="msg" id="usernameMsg"></div>
+<button type="submit" class="ore-btn block">Save username</button>
+</form>
+</div>
+
+<div class="ore-panel auth-card" id="authProfile" hidden>
+<div class="profile-head"><h3><span id="profName" class="notranslate" translate="no"></span><span class="staff-tag" id="profStaff" hidden>Staff</span></h3><span class="dim" id="profEmail"></span></div>
+<div class="msg info" id="staffNote" hidden>This is a staff account. Its password is managed by the server owner, so it can't be changed here.</div>
+<div class="msg" id="profMsg"></div>
+<button type="button" class="ore-btn gray block" id="resetBtn">Email me a password reset link</button>
+<button type="button" class="ore-btn danger block" id="logoutBtn">Log out</button>
+</div>
+</div>
+</section>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-overlay" id="cartModal">
+<div class="ore-panel modal-card">
+<div class="modal-header"><h2>Your cart</h2><button type="button" class="close-btn" data-close="cartModal" aria-label="Close">&times;</button></div>
+<div class="cart-lines" id="cartLines"></div>
+<div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+<div class="msg" id="cartMsg"></div>
+<button type="button" class="ore-btn block" id="checkoutBtn">Checkout</button>
+<button type="button" class="ore-btn gray block" id="clearCartBtn">Clear cart</button>
+</div>
+</div>
+
+<div class="modal-overlay" id="postModal">
+<div class="ore-panel modal-card">
+<div class="modal-header"><h2 id="postModalTitle">New post</h2><button type="button" class="close-btn" data-close="postModal" aria-label="Close">&times;</button></div>
+<form class="form" id="postForm" novalidate>
+<div class="field"><label for="postTitle">Title</label><input type="text" id="postTitle" maxlength="120"></div>
+<div class="field"><label for="postBody">Message</label><textarea id="postBody" maxlength="5000"></textarea></div>
+<div class="msg" id="postMsg"></div>
+<button type="submit" class="ore-btn block" id="postSubmit">Post</button>
+</form>
+</div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer class="site-footer">
+<div class="footer-grid">
+<div>
+<img class="footer-logo" src="assets/logo.png" alt="SoloMC">
+<p>SoloMC is an independent Minecraft multiplayer network providing custom Survival and Economy gameplay with full Java and Bedrock crossplay.</p>
+</div>
+<div>
+<h4>Navigation</h4>
+<a href="#home">Home</a>
+<a href="#store">Webstore</a>
+<a href="#info">Server Info</a>
+<a href="#forum">Forum</a>
+<a href="#faq">FAQ</a>
+</div>
+<div>
+<h4>Community</h4>
+<a href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Official Discord</a>
+<a id="emailLink" href="#" hidden>Email Support</a>
+<a href="#info">Connection Guide</a>
+</div>
+</div>
+<div class="legal"><span class="notranslate" translate="no">&copy; 2026 SoloMC Network. All rights reserved.</span><span>Not affiliated with Mojang AB or Microsoft.</span></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
