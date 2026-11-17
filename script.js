@@ -7,7 +7,7 @@ var CONFIG = {
   BEDROCK_PORT: '19132',
   DISCORD_URL: 'https://discord.gg/solomc',
   SUPPORT_EMAIL: '',                       // e.g. 'support@solomc.net' (empty = hide "Email Support")
-  OWNER_EMAIL: 'faxissssss@gmail.com',     // this Google account gets the Owner panel (must be a verified email)
+  OWNER_EMAIL: 'jerryclaytor01@gmail.com',     // this Google account gets the Owner panel (must be a verified email)
 
   // Paste your Firebase web-app config here (Project settings > Your apps > Web app).
   FIREBASE: {
