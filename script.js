@@ -16,7 +16,6 @@ var CONFIG = {
     projectId: 'solomc-40d60',
     appId: '1:732662603579:web:c299d3187fbca16dc2211e'
   },
-
   // Store checkout. Receives the cart [{id, name, price, qty}] and the buyer's Minecraft
   // username, and must return a Promise (e.g. fetch(...) then redirect to the payment page).
   // The in-game commands that give the ranks belong to your store backend/API, not to this file.
