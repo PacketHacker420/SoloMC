@@ -152,7 +152,7 @@ var me = { user: null, username: '', display: '', photo: '', banner: '', bio: ''
 var site = { banner: '', bannerOn: false, ticketAi: true };
 var fbConfigured = CONFIG.FIREBASE.apiKey && CONFIG.FIREBASE.apiKey.indexOf('PASTE') !== 0 && CONFIG.FIREBASE.projectId.indexOf('PASTE') !== 0;
 var NOT_CONNECTED = 'Accounts, the forum and tickets are not connected yet. The site owner needs to add the Firebase settings in script.js.';
-function isTeam() { return me.staff || me.admin; }
+function isTeam() { return me.staff || me.admin || me.dev; }
 function myName() { return me.display || me.username; }
 function roleFlags() { return { staff: isTeam(), owner: me.admin, dev: me.dev }; }
 
