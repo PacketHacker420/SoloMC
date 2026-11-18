@@ -816,19 +816,71 @@ function showProfile(uid, flags) {
   }).catch(function () { toast('Could not load profile'); });
 }
 
+var authorProfileCache = {};
+
+function addAuthorAvatar(container, uid, name) {
+  var avatar = el('div', 'author-avatar');
+  avatar.textContent = (name || '?').charAt(0).toUpperCase();
+  container.appendChild(avatar);
+
+  if (!uid || !fb.ready) return;
+
+  if (authorProfileCache[uid]) {
+    applyAuthorAvatar(avatar, authorProfileCache[uid]);
+    return;
+  }
+
+  fb.db.collection('profiles').doc(uid).get().then(function (doc) {
+    var profile = doc.exists ? doc.data() : {};
+    authorProfileCache[uid] = profile.photo || '';
+    applyAuthorAvatar(avatar, profile.photo || '');
+  }).catch(function () {});
+}
+
+function applyAuthorAvatar(avatar, photo) {
+  if (!validImg(photo)) return;
+
+  avatar.textContent = '';
+  var img = document.createElement('img');
+  img.src = photo;
+  img.alt = 'Profile picture';
+  img.onerror = function () {
+    avatar.removeChild(img);
+  };
+  avatar.appendChild(img);
+}
+
 function authorLine(d, extra, clickable) {
   var m = el('div', 'post-meta');
+
+  addAuthorAvatar(m, d.authorUid, d.authorName || 'Unknown');
+
   var nm;
   if (clickable && d.authorUid) {
-    nm = el('button', 'name-link', d.authorName || 'Unknown'); nm.type = 'button';
-    nm.addEventListener('click', function () { showProfile(d.authorUid, { staff: d.staff, owner: d.owner, dev: d.dev }); });
-  } else nm = el('span', '', d.authorName || 'Unknown');
-  noTr(nm); m.appendChild(nm);
+    nm = el('button', 'name-link', d.authorName || 'Unknown');
+    nm.type = 'button';
+    nm.addEventListener('click', function () {
+      showProfile(d.authorUid, {
+        staff: d.staff,
+        owner: d.owner,
+        dev: d.dev
+      });
+    });
+  } else {
+    nm = el('span', '', d.authorName || 'Unknown');
+  }
+
+  noTr(nm);
+  m.appendChild(nm);
+
   if (d.owner) m.appendChild(el('span', 'staff-tag owner', 'Owner'));
   else if (d.dev) m.appendChild(el('span', 'staff-tag dev', 'Dev'));
   else if (d.staff) m.appendChild(el('span', 'staff-tag', 'Staff'));
+
   m.appendChild(el('span', '', fmtDate(d.createdAt)));
+
   if (extra) m.appendChild(el('span', '', extra));
+
   return m;
 }
 
