@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SoloMC</title>
-<meta name="description" content="SoloMC — the premier Economy network for Minecraft Java and Bedrock at solomc.net.">
+<meta name="description" content="SoloMC — the premier Economy network for Minecraft Java and Bedrock at play.solomc.net.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +13,19 @@
 </head>
 <body>
 
-<nav class="topnav"><div class="topnav-inner">
+<nav class="topnav">
+<div class="topnav-inner">
 <a class="brand notranslate" translate="no" href="#home"><img src="assets/logo.png" alt="SoloMC logo">SoloMC</a>
 <div class="tabs" id="tabs">
 <a class="tab" data-view="home" href="#home">Home</a>
 <a class="tab" data-view="store" href="#store">Store</a>
 <a class="tab" data-view="info" href="#info">Server Info</a>
 <a class="tab" data-view="forum" href="#forum">Forum</a>
-<a class="tab" data-view="tickets" href="#tickets">Tickets</a>
+<a class="tab" data-view="tickets" href="#tickets">Tickets<span class="nbadge" data-badge="tickets" hidden></span></a>
 <a class="tab" data-view="faq" href="#faq">FAQ</a>
 <a class="tab" href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Discord</a>
-<a class="tab" data-view="owner" href="#owner" id="ownerTab" hidden>Owner</a>
-<a class="tab" data-view="account" href="#account" id="accountTab">Log in</a>
+<a class="tab mobile-only" data-view="account" href="#account" data-acct>Log in</a>
+<div class="role-group" id="roleDup"></div>
 </div>
 <div class="nav-tools">
 <button type="button" class="ore-btn gray tool-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Language">
@@ -35,6 +36,7 @@
 <button type="button" class="ore-btn tool-btn" id="cartBtn" aria-label="Cart">
 <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M2 3h3l3 12h11l2-8H6"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>
 <span class="cart-text">Cart</span><span class="cart-count" id="cartCount">0</span></button>
+<a class="ore-btn gray tool-btn acct-btn" href="#account" data-view="account" data-acct>Log in</a>
 <button type="button" class="ore-btn gray tool-btn burger" id="menuBtn" aria-expanded="false" aria-controls="tabs" aria-label="Menu">
 <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
 <span class="menu-label">Menu</span></button>
@@ -54,8 +56,11 @@
 </div>
 <button type="button" class="ore-btn gray small" id="fontReset">Reset font</button>
 </div>
-</div></nav>
+</div>
+<div class="rolebar" id="roleBar" hidden><div class="rolebar-inner" id="roleBarInner"></div></div>
+</nav>
 <div id="google_translate_element"></div>
+<div class="site-banner" id="siteBanner" hidden></div>
 
 <!-- ============ HOME ============ -->
 <section class="view page" id="v-home" data-view="home">
@@ -70,13 +75,13 @@
 <div class="status-row" id="statusRow"></div>
 <div class="cta-row">
 <a class="ore-btn" href="#store">Visit Rank Store</a>
-<button type="button" class="ore-btn gray" data-copy="solomc.net">Copy IP: solomc.net</button>
+<button type="button" class="ore-btn gray" data-copy="play.solomc.net">Copy IP: play.solomc.net</button>
 <a class="ore-btn blurple" href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>Join Discord</a>
 </div>
 </div>
 
 <div class="ore-panel stats-grid reveal">
-<div class="stat span"><small>Server IP</small><b class="hl">solomc.net</b></div>
+<div class="stat span"><small>Server IP</small><b class="hl">play.solomc.net</b></div>
 <div class="stat"><small>Game modes</small><b>Economy</b></div>
 <div class="stat"><small>Compatibility</small><b>Cracked + Premium</b></div>
 <div class="stat"><small>Java port</small><b>25565</b></div>
@@ -127,7 +132,7 @@
 </div>
 
 <div class="ore-panel stats-grid reveal" style="grid-template-columns:repeat(2,1fr)">
-<div class="stat"><small>Server IP</small><b class="hl">solomc.net</b></div>
+<div class="stat"><small>Server IP</small><b class="hl">play.solomc.net</b></div>
 <div class="stat"><small>Game modes</small><b>Economy</b></div>
 </div>
 
@@ -136,13 +141,13 @@
 <div class="edition-head"><span class="ore-inset edition-ic">☕</span><div><h3>Java Edition</h3><p>Windows, Mac &amp; Linux clients</p></div></div>
 <div class="ore-inset row"><span>Port</span><span class="hl">25565</span></div>
 <div class="ore-inset row"><span>Compatibility</span><span>Cracked + Premium</span></div>
-<button type="button" class="ore-btn block" data-copy="solomc.net:25565">Copy Java Address &amp; Port</button>
+<button type="button" class="ore-btn block" data-copy="play.solomc.net:25565">Copy Java Address &amp; Port</button>
 </div>
 <div class="ore-panel edition">
 <div class="edition-head"><span class="ore-inset edition-ic"><svg class="bedrock-ic" viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true"><rect width="8" height="8" fill="#555"/><rect x="0" y="0" width="2" height="1" fill="#8a8a8a"/><rect x="3" y="0" width="1" height="2" fill="#2e2e2e"/><rect x="5" y="1" width="2" height="1" fill="#7a7a7a"/><rect x="1" y="2" width="1" height="2" fill="#2e2e2e"/><rect x="4" y="3" width="2" height="1" fill="#8a8a8a"/><rect x="6" y="3" width="1" height="2" fill="#2e2e2e"/><rect x="0" y="5" width="2" height="1" fill="#7a7a7a"/><rect x="3" y="5" width="1" height="2" fill="#2e2e2e"/><rect x="5" y="6" width="2" height="1" fill="#8a8a8a"/><rect x="1" y="7" width="2" height="1" fill="#2e2e2e"/><rect x="6" y="0" width="1" height="1" fill="#2e2e2e"/><rect x="7" y="7" width="1" height="1" fill="#7a7a7a"/></svg></span><div><h3>Bedrock Edition</h3><p>iOS, Android, consoles &amp; Windows 10/11</p></div></div>
 <div class="ore-inset row"><span>Bedrock port</span><span class="hl">19132</span></div>
 <div class="ore-inset row"><span>Compatibility</span><span>Cracked + Premium</span></div>
-<button type="button" class="ore-btn block" data-copy="solomc.net:19132">Copy Bedrock Address &amp; Port</button>
+<button type="button" class="ore-btn block" data-copy="play.solomc.net:19132">Copy Bedrock Address &amp; Port</button>
 </div>
 </div>
 </section>
@@ -179,17 +184,106 @@
 <div class="thread" id="ticketThread" hidden></div>
 </section>
 
-<!-- ============ OWNER PANEL ============ -->
-<section class="view page" id="v-owner" data-view="owner">
+<!-- ============ STAFF AREA ============ -->
+<section class="view page" id="v-staff" data-view="staff">
 <div class="section-head reveal">
-<span class="pill">Owner only</span>
-<h1 class="section-title">Owner <span class="hl">panel</span></h1>
-<p class="lead">Staff activity tools. Regular staff accounts can't see this page or its data.</p>
+<span class="pill">Staff only</span>
+<h1 class="section-title">Staff <span class="hl">area</span></h1>
+<p class="lead">Ticket queue and the private staff forum. Players can't see any of this.</p>
 </div>
 
 <div class="ore-panel owner-card">
-<div class="owner-head"><h3>Staff last seen</h3><button type="button" class="ore-btn gray small" id="seenRefresh">Refresh</button></div>
+<div class="owner-head"><h3>Ticket queue</h3><button type="button" class="ore-btn gray small" id="notifBtn">Enable desktop alerts</button></div>
+<p class="dim" id="queueInfo"></p>
+<div class="owner-list" id="queueList"></div>
+</div>
+
+<div class="section-head"><h2 class="section-title" style="font-size:24px">Staff <span class="hl">forum</span></h2></div>
+<div class="msg info" id="sfNotice"></div>
+<div id="sfList" style="display:flex;flex-direction:column;gap:18px">
+<div class="board-tabs" id="sfTabs"></div>
+<div class="forum-bar"><p id="sfDesc"></p><button type="button" class="ore-btn" id="sfNewBtn">New Post</button></div>
+<div class="post-list" id="sfPosts"></div>
+</div>
+<div class="thread" id="sfThread" hidden></div>
+</section>
+
+<!-- ============ MAIL ============ -->
+<section class="view page" id="v-mail" data-view="mail">
+<div class="section-head reveal">
+<span class="pill">Staff only</span>
+<h1 class="section-title">Staff <span class="hl">mail</span></h1>
+<p class="lead" id="mailLead"></p>
+</div>
+<div class="msg info" id="mailNotice"></div>
+<div id="mailMain" style="display:flex;flex-direction:column;gap:18px">
+<div class="ore-panel owner-card" id="mailCompose" hidden>
+<div class="owner-head"><h3>New mail</h3></div>
+<form class="mail-compose" id="mailForm" novalidate>
+<div class="field"><label>Send to</label>
+<div class="ore-inset pick-list" id="mailTo"></div></div>
+<div class="field"><label for="mailSubject">Subject</label><input type="text" id="mailSubject" maxlength="120"></div>
+<div class="field"><label for="mailBody">Message</label><textarea id="mailBody" maxlength="5000"></textarea></div>
+<div class="msg" id="mailMsg"></div>
+<button type="submit" class="ore-btn" id="mailSend">Send mail</button>
+</form>
+</div>
+<div class="owner-head"><h3 id="mailListTitle">Inbox</h3><button type="button" class="ore-btn gray small" id="mailRefresh">Refresh</button></div>
+<div class="post-list" id="mailList"></div>
+</div>
+<div class="thread" id="mailThread" hidden></div>
+</section>
+
+<!-- ============ OWNER PANEL ============ -->
+<section class="view page wide" id="v-owner" data-view="owner">
+<div class="section-head reveal">
+<span class="pill">Owner only</span>
+<h1 class="section-title">Owner <span class="hl">panel</span></h1>
+<p class="lead">Overview, staff management and moderation tools. Regular staff can't see this page.</p>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Overview</h3><button type="button" class="ore-btn gray small" id="ownRefresh">Refresh all</button></div>
+<div class="stat-cards" id="ownStats"></div>
+<div class="cta-row" style="justify-content:flex-start">
+<a class="ore-btn small" href="#staff">Staff area</a>
+<a class="ore-btn small" href="#mail">Send mail</a>
+<a class="ore-btn small" href="#tickets">Tickets</a>
+<a class="ore-btn small" href="#dev">Dev panel</a>
+</div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Site banner</h3></div>
+<p class="dim">Shows a message across the top of every page. Good for maintenance notices, events and sales.</p>
+<div id="ownBanner"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Staff roster</h3><button type="button" class="ore-btn gray small" id="seenRefresh">Refresh</button></div>
+<div class="inline-form">
+<input type="text" id="staffAddInput" maxlength="60" placeholder="Username or account ID to make staff" autocomplete="off">
+<button type="button" class="ore-btn small" id="staffAddBtn">Add staff</button>
+</div>
+<div class="msg" id="staffAddMsg"></div>
 <div class="owner-list" id="seenList"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Staff performance</h3></div>
+<p class="dim">Based on the latest 200 tickets.</p>
+<div class="perf-table" id="perfList"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Recent tickets</h3></div>
+<div class="owner-list" id="ownTickets"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Forum moderation</h3><button type="button" class="ore-btn gray small" id="modRefresh">Refresh</button></div>
+<p class="dim">Latest posts across the public boards. Delete anything that breaks the rules.</p>
+<div class="owner-list" id="modFeed"></div>
 </div>
 
 <div class="ore-panel owner-card">
@@ -204,6 +298,50 @@
 </div>
 </section>
 
+<!-- ============ DEV PANEL ============ -->
+<section class="view page wide" id="v-dev" data-view="dev">
+<div class="section-head reveal">
+<span class="pill">Developer</span>
+<h1 class="section-title">Dev <span class="hl">panel</span></h1>
+<p class="lead">Diagnostics, feature switches and a read-only data viewer. Visible to the developer and the owner.</p>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Diagnostics</h3><button type="button" class="ore-btn small" id="devRun">Run checks</button></div>
+<div class="owner-list" id="devEnv"></div>
+<div class="owner-list" id="devChecks"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Feature switches</h3></div>
+<div class="owner-list" id="devFlags"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Site banner</h3></div>
+<div id="devBanner"></div>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Data viewer</h3></div>
+<p class="dim">Read-only. Images are hidden and only the first 25 documents load.</p>
+<div class="inline-form">
+<select id="devSel" style="flex:1 1 200px">
+<option value="siteConfig">siteConfig</option>
+<option value="staff">staff</option>
+<option value="profiles">profiles</option>
+</select>
+<button type="button" class="ore-btn small" id="devLoad">Load</button>
+</div>
+<pre class="ore-inset out" id="devOut">Nothing loaded yet.</pre>
+</div>
+
+<div class="ore-panel owner-card">
+<div class="owner-head"><h3>Errors this session</h3><button type="button" class="ore-btn gray small" id="devClearErr">Clear</button></div>
+<pre class="ore-inset out" id="devErrors">No errors recorded.</pre>
+</div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="view page" id="v-faq" data-view="faq">
 <div class="section-head reveal">
@@ -213,11 +351,11 @@
 </div>
 <div class="faq-list reveal">
 <details class="ore-panel faq-item" open><summary>How do I join on Minecraft Java &amp; Bedrock?</summary><div class="ans">
-<p><b>Java Edition:</b> go to Multiplayer → Add Server, and enter the server address <b>solomc.net</b>. Java uses the default port <b>25565</b>, so you don't need to type a port.</p>
-<p><b>Bedrock Edition</b> (Windows 10/11, iOS, Android and consoles): go to Play → Servers → Add Server, enter the server address <b>solomc.net</b>, and set the port to <b>19132</b>. Bedrock players must set the port to 19132 or the server won't show up.</p>
+<p><b>Java Edition:</b> go to Multiplayer → Add Server, and enter the server address <b>play.solomc.net</b>. Java uses the default port <b>25565</b>, so you don't need to type a port.</p>
+<p><b>Bedrock Edition</b> (Windows 10/11, iOS, Android and consoles): go to Play → Servers → Add Server, enter the server address <b>play.solomc.net</b>, and set the port to <b>19132</b>. Bedrock players must set the port to 19132 or the server won't show up.</p>
 </div></details>
-<details class="ore-panel faq-item"><summary>Can players with non-premium (cracked) accounts join?</summary><div class="ans">Yes, SoloMC fully supports both official Mojang/Microsoft accounts and non-premium (cracked) clients. Simply enter <b>solomc.net</b> and connect!</div></details>
-<details class="ore-panel faq-item"><summary>How long does it take for ranks to be delivered?</summary><div class="ans">Purchases are automated and delivered via console commands within <b>1 to 5 minutes</b>. Please stay connected to <b>solomc.net</b> while completing checkout.</div></details>
+<details class="ore-panel faq-item"><summary>Can players with non-premium (cracked) accounts join?</summary><div class="ans">Yes, SoloMC fully supports both official Mojang/Microsoft accounts and non-premium (cracked) clients. Simply enter <b>play.solomc.net</b> and connect!</div></details>
+<details class="ore-panel faq-item"><summary>How long does it take for ranks to be delivered?</summary><div class="ans">Purchases are automated and delivered via console commands within <b>1 to 5 minutes</b>. Please stay connected to <b>play.solomc.net</b> while completing checkout.</div></details>
 <details class="ore-panel faq-item"><summary>Where do I go if I need staff assistance?</summary><div class="ans">Open a ticket on the <a href="#tickets">Tickets page</a>, or join our Discord server at <a href="https://discord.gg/solomc" target="_blank" rel="noopener noreferrer" data-discord>discord.gg/solomc</a> and open a ticket there.</div></details>
 </div>
 </section>
@@ -258,12 +396,21 @@
 
 <div class="ore-panel auth-card profile-card" id="authProfile" hidden>
 <div class="prof-banner" id="profBanner"></div>
-<div class="prof-avatar" id="profAvatar"></div>
+<div class="prof-avatar" id="profAvatar"><span class="av-letter"></span><span class="st" id="profDot"></span></div>
 <div class="profile-head">
-<h3><span id="profName" class="notranslate" translate="no"></span><span class="staff-tag" id="profStaff" hidden>Staff</span><span class="staff-tag owner" id="profOwner" hidden>Owner</span></h3>
+<h3><span id="profName" class="notranslate" translate="no"></span><span class="staff-tag" id="profStaff" hidden>Staff</span><span class="staff-tag dev" id="profDev" hidden>Dev</span><span class="staff-tag owner" id="profOwner" hidden>Owner</span></h3>
 <span class="dim notranslate" translate="no" id="profHandle"></span>
+<span class="st-line" id="profStatusLine"></span>
 <span class="dim notranslate" translate="no" id="profEmail"></span>
 </div>
+<div class="bio-text" id="profBio"></div>
+<div class="field"><label for="statusQuick">Status</label>
+<select id="statusQuick">
+<option value="online">Online</option>
+<option value="idle">Idle</option>
+<option value="dnd">Do not disturb</option>
+<option value="invisible">Invisible</option>
+</select></div>
 <div class="msg info" id="staffNote" hidden>This is a staff account. Its password is managed by the server owner, so it can't be changed here.</div>
 <div class="msg" id="profMsg"></div>
 <button type="button" class="ore-btn block" id="editProfileBtn">Edit profile</button>
@@ -271,6 +418,8 @@
 <form class="form" id="profileForm" hidden novalidate>
 <div class="field"><label for="pfDisplay">Display name</label><input type="text" id="pfDisplay" maxlength="32" placeholder="How your name shows on the forum"></div>
 <div class="field"><label for="pfUser">Username</label><input type="text" id="pfUser" maxlength="20" placeholder="3-20 letters, numbers or _"></div>
+<div class="field"><label for="pfStatusText">Status text</label><input type="text" id="pfStatusText" maxlength="60" placeholder="What are you up to?"></div>
+<div class="field"><label for="pfBio">Bio</label><textarea id="pfBio" maxlength="200" style="min-height:80px" placeholder="Tell people a bit about you (200 characters)"></textarea></div>
 <div class="field"><label for="pfPhoto">Profile picture</label>
 <div class="file-row"><div class="thumb" id="pfPhotoThumb"></div><input type="file" id="pfPhoto" accept="image/*"><button type="button" class="ore-btn gray small" id="pfPhotoRemove">Remove</button></div></div>
 <div class="field"><label for="pfBanner">Banner</label>
@@ -319,9 +468,16 @@
 </div>
 
 <div class="modal-overlay" id="ticketModal">
-<div class="ore-panel modal-card">
+<div class="ore-panel modal-card wide-modal">
 <div class="modal-header"><h2>New ticket</h2><button type="button" class="close-btn" data-close="ticketModal" aria-label="Close">&times;</button></div>
-<form class="form" id="ticketForm" novalidate>
+
+<div id="aiBox" class="form">
+<div class="ai-log" id="aiLog"></div>
+<div class="ai-controls" id="aiControls"></div>
+<button type="button" class="link-btn" id="aiSkip">Skip the questions and write it myself</button>
+</div>
+
+<form class="form" id="ticketForm" hidden novalidate>
 <div class="field"><label for="tkCat">Category</label>
 <select id="tkCat">
 <option value="support">Support</option>
@@ -334,6 +490,7 @@
 <div class="field"><label for="tkMessage">Describe the problem</label><textarea id="tkMessage" maxlength="4000" placeholder="Include your Minecraft username and as many details as you can."></textarea></div>
 <div class="msg" id="tkMsg"></div>
 <button type="submit" class="ore-btn block" id="tkSubmit">Open ticket</button>
+<button type="button" class="link-btn" id="tkBack" hidden>Back to the guided questions</button>
 </form>
 </div>
 </div>
@@ -342,9 +499,11 @@
 <div class="ore-panel modal-card" style="padding:0;overflow:hidden">
 <div class="prof-banner" id="pmBanner" style="border-width:0 0 2px 0"></div>
 <div style="padding:0 22px 22px;display:flex;flex-direction:column;gap:10px">
-<div class="prof-avatar" id="pmAvatar"></div>
-<h3 style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span id="pmName" class="notranslate" translate="no"></span><span class="staff-tag" id="pmStaff" hidden>Staff</span><span class="staff-tag owner" id="pmOwner" hidden>Owner</span></h3>
+<div class="prof-avatar" id="pmAvatar"><span class="av-letter"></span><span class="st" id="pmDot"></span></div>
+<h3 style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span id="pmName" class="notranslate" translate="no"></span><span class="staff-tag" id="pmStaff" hidden>Staff</span><span class="staff-tag dev" id="pmDev" hidden>Dev</span><span class="staff-tag owner" id="pmOwner" hidden>Owner</span></h3>
 <span class="dim notranslate" translate="no" id="pmHandle"></span>
+<span class="st-line" id="pmStatusLine"></span>
+<div class="bio-text" id="pmBio"></div>
 <button type="button" class="ore-btn gray block" data-close="profileModal">Close</button>
 </div>
 </div>
